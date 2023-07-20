@@ -1,5 +1,5 @@
 DEFAULT_SETTINGS = {
-    "display_name": "",
+    "display_name": "Camped XBlock",
 }
 
 def get_xblock_settings():
