@@ -1,3 +1,7 @@
+from django.conf import settings as django_settings
+
+SETTINGS_KEY = 'xblocks-chatgpt'
+
 DEFAULT_SETTINGS = {
     "display_name": "Camped XBlock",
 }
