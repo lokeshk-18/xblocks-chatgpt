@@ -6,14 +6,16 @@ from xblock.core import XBlock
 from xblock.fields import Integer, String, Scope
 from xblock.fragment import Fragment
 from xblockutils.studio_editable import StudioEditableXBlockMixin
-from common.py import DEFAULT_SETTINGS
+from .common import (get_xblock_settings)
 
 class ChatgptXBlock(StudioEditableXBlockMixin, XBlock):
+
+    settings = get_xblock_settings()
     # Define the fields of the XBlock
     display_name = String(
         display_name="Display Name",
         help="Display name for this module",
-        default=DEFAULT_SETTINGS["display_name"],
+        default=settings.get("display_name"),
         scope=Scope.settings,
     )
 
