@@ -6,14 +6,14 @@ from xblock.core import XBlock
 from xblock.fields import Integer, String, Scope
 from xblock.fragment import Fragment
 from xblockutils.studio_editable import StudioEditableXBlockMixin
-from common.py import DEFAULT_SETTINGS
+
 
 class ChatgptXBlock(StudioEditableXBlockMixin, XBlock):
     # Define the fields of the XBlock
     display_name = String(
         display_name="Display Name",
         help="Display name for this module",
-        default=DEFAULT_SETTINGS["display_name"],
+        default="ChatGPT Assistant",
         scope=Scope.settings,
     )
 
@@ -29,7 +29,7 @@ class ChatgptXBlock(StudioEditableXBlockMixin, XBlock):
     )
 
     api_key = String(
-        default="",
+        default="sk-vyJzdurDebHNfWknuNR7T3BlbkFJXWWRjsdfsdfdrwfsdf",
         scope=Scope.settings,
         help="Your OpenAI API key, which can be found at <a href='https://platform.openai.com/account/api-keys' target='_blank'>https://platform.openai.com/account/api-keys</a>",
     )
