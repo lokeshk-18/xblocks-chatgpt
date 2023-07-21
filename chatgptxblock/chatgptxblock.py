@@ -7,12 +7,16 @@ from xblock.fields import Integer, String, Scope
 from xblock.fragment import Fragment
 from xblockutils.studio_editable import StudioEditableXBlockMixin
 from .common import (get_xblock_settings)
+from tutor import config
 
 class ChatgptXBlock(StudioEditableXBlockMixin, XBlock):
 
     xblock_settings = get_xblock_settings()
     # Define the fields of the XBlock
     print(xblock_settings)
+    print(config.XBLOCK_SETTINGS)
+    print(config.XBLOCK_SETTINGS.get("xblocks-chatgpt", {}).get("display_name"))
+    d_name=config.XBLOCK_SETTINGS.get("xblocks-chatgpt", {}).get("display_name")
     display_name = String(
         display_name="Display Name",
         help="Display name for this module",
