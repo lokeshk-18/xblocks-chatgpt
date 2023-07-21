@@ -12,6 +12,7 @@ class ChatgptXBlock(StudioEditableXBlockMixin, XBlock):
 
     xblock_settings = get_xblock_settings()
     # Define the fields of the XBlock
+    print(xblock_settings)
     display_name = String(
         display_name="Display Name",
         help="Display name for this module",
