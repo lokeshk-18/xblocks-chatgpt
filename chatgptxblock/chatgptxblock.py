@@ -2,21 +2,26 @@ import json
 import requests
 import pkg_resources
 import openai
+import yaml
 from xblock.core import XBlock
 from xblock.fields import Integer, String, Scope
 from xblock.fragment import Fragment
 from xblockutils.studio_editable import StudioEditableXBlockMixin
 from .common import (get_xblock_settings)
-from tutor import config
+# from tutor import config
+# print(config.XBLOCK_SETTINGS)
+#     print(config.XBLOCK_SETTINGS.get("xblocks-chatgpt", {}).get("display_name"))
+#     d_name=config.XBLOCK_SETTINGS.get("xblocks-chatgpt", {}).get("display_name")
 
 class ChatgptXBlock(StudioEditableXBlockMixin, XBlock):
-
-    xblock_settings = get_xblock_settings()
+    # xblock_settings = get_xblock_settings()
     # Define the fields of the XBlock
+    with open('/path/to/tutor/config.yml', 'r') as config_file:
+        config = yaml.safe_load(config_file)
+    xblock_settings = config.get('XBLOCK_SETTINGS', {}).get('xblocks-chatgpt', {})
     print(xblock_settings)
-    print(config.XBLOCK_SETTINGS)
-    print(config.XBLOCK_SETTINGS.get("xblocks-chatgpt", {}).get("display_name"))
-    d_name=config.XBLOCK_SETTINGS.get("xblocks-chatgpt", {}).get("display_name")
+    print(config.get('XBLOCK_SETTINGS', {}))
+    
     display_name = String(
         display_name="Display Name",
         help="Display name for this module",
