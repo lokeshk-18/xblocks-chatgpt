@@ -14,7 +14,7 @@ class ChatgptXBlock(StudioEditableXBlockMixin, XBlock):
     xblock_settings = get_xblock_settings()
     # Define the fields of the XBlock
     print(xblock_settings)
-    d_name=settings.OPENAI_SECRET_KEY
+    d_name=settings.DISPLAY_NAME
     print(d_name)
     display_name = String(
         display_name="Display Name",
