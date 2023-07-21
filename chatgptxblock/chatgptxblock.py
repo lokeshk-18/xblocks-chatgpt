@@ -13,14 +13,14 @@ from django.conf import settings
 class ChatgptXBlock(StudioEditableXBlockMixin, XBlock):
     xblock_settings = get_xblock_settings()
     # Define the fields of the XBlock
-    print(xblock_settings)
-    d_name=settings.DISPLAY_NAME
+    # print(xblock_settings)
     print(settings)
+    # d_name=settings.DISPLAY_NAME
     display_name = String(
         display_name="Display Name",
         help="Display name for this module",
-        # default=xblock_settings.get("display_name"),
-        default=d_name,
+        default=xblock_settings.get("display_name"),
+        # default=d_name,
         scope=Scope.settings,
     )
 
