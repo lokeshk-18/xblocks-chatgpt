@@ -8,24 +8,19 @@ from xblock.fields import Integer, String, Scope
 from xblock.fragment import Fragment
 from xblockutils.studio_editable import StudioEditableXBlockMixin
 from .common import (get_xblock_settings)
-# from tutor import config
-# print(config.XBLOCK_SETTINGS)
-#     print(config.XBLOCK_SETTINGS.get("xblocks-chatgpt", {}).get("display_name"))
-#     d_name=config.XBLOCK_SETTINGS.get("xblocks-chatgpt", {}).get("display_name")
+from django.conf import settings
 
 class ChatgptXBlock(StudioEditableXBlockMixin, XBlock):
-    # xblock_settings = get_xblock_settings()
+    xblock_settings = get_xblock_settings()
     # Define the fields of the XBlock
-    with open('/Users/lokeshk/chat-config/config.yml', 'r') as config_file:
-        config = yaml.safe_load(config_file)
-    xblock_settings = config.get('XBLOCK_SETTINGS', {}).get('xblocks-chatgpt', {})
     print(xblock_settings)
-    print(config.get('XBLOCK_SETTINGS', {}))
-    
+    d_name=settings.OPENAI_SECRET_KEY
+    print(d_name)
     display_name = String(
         display_name="Display Name",
         help="Display name for this module",
-        default=xblock_settings.get("display_name"),
+        # default=xblock_settings.get("display_name"),
+        default=d_name,
         scope=Scope.settings,
     )
 
