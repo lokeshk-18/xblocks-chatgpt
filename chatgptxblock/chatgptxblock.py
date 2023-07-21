@@ -16,7 +16,7 @@ from .common import (get_xblock_settings)
 class ChatgptXBlock(StudioEditableXBlockMixin, XBlock):
     # xblock_settings = get_xblock_settings()
     # Define the fields of the XBlock
-    with open('/path/to/tutor/config.yml', 'r') as config_file:
+    with open('/Users/lokeshk/Library/Application Support/tutor/config.yml', 'r') as config_file:
         config = yaml.safe_load(config_file)
     xblock_settings = config.get('XBLOCK_SETTINGS', {}).get('xblocks-chatgpt', {})
     print(xblock_settings)
