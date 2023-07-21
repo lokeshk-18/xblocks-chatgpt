@@ -10,12 +10,12 @@ from .common import (get_xblock_settings)
 
 class ChatgptXBlock(StudioEditableXBlockMixin, XBlock):
 
-    settings = get_xblock_settings()
+    xblock_settings = get_xblock_settings()
     # Define the fields of the XBlock
     display_name = String(
         display_name="Display Name",
         help="Display name for this module",
-        default=settings.get("display_name"),
+        default=xblock_settings.get("display_name"),
         scope=Scope.settings,
     )
 
@@ -52,13 +52,13 @@ class ChatgptXBlock(StudioEditableXBlockMixin, XBlock):
 
     # TO-DO: Add any additional fields.
 
-    # editable_fields = [
-    #     'display_name',
+    editable_fields = [
+        'display_name',
     #     'model_name',
     #     'api_key',
     #     'description',
     #     'context_text',
-    # ]
+    ]
 
     def resource_string(self, path):
         """Handy helper for getting resources from our kit."""
