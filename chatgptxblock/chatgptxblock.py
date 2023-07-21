@@ -14,7 +14,7 @@ class ChatgptXBlock(StudioEditableXBlockMixin, XBlock):
     xblock_settings = get_xblock_settings()
     # Define the fields of the XBlock
     # print(xblock_settings)
-    print(settings)
+    # print(settings)
     # d_name=settings.DISPLAY_NAME
     display_name = String(
         display_name="Display Name",
@@ -36,7 +36,7 @@ class ChatgptXBlock(StudioEditableXBlockMixin, XBlock):
     )
 
     api_key = String(
-        default="",
+        default="njdn3bfhbi",
         scope=Scope.settings,
         help="Your OpenAI API key, which can be found at <a href='https://platform.openai.com/account/api-keys' target='_blank'>https://platform.openai.com/account/api-keys</a>",
     )
