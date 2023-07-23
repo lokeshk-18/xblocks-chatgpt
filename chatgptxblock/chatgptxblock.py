@@ -30,8 +30,8 @@ class ChatgptXBlock(StudioEditableXBlockMixin, XBlock):
 
         # Accessing the configuration data from XBlock runtime
         xblock_config = self.runtime.handler_env['xblock'].runtime.get_user_state('XBLOCK_CONFIG')
-        this.a_key = xblock_config.get('OPENAI_KEY')
-        print(this.a_key)
+        self.a_key = xblock_config.get('OPENAI_KEY')
+        print(self.a_key)
     display_name = String(
         display_name="Display Name",
         help="Display name for this module",
@@ -52,7 +52,7 @@ class ChatgptXBlock(StudioEditableXBlockMixin, XBlock):
     )
 
     api_key = String(
-        default=this.a_key,
+        default=a_key,
         scope=Scope.settings,
         help="Your OpenAI API key, which can be found at <a href='https://platform.openai.com/account/api-keys' target='_blank'>https://platform.openai.com/account/api-keys</a>",
     )
