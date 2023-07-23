@@ -17,12 +17,12 @@ class ChatgptXBlock(StudioEditableXBlockMixin, XBlock):
     # print(xblock_settings)
     # print(settings)
     # d_name=settings.DISPLAY_NAME
-    print("hi",Scope)
+    # print("hi",Scope)
     display_name = String(
         display_name="Display Name",
         help="Display name for this module",
         # default=xblock_settings.get("display_name"),
-        default=Scope.settings.OPENAI_SECRET_KEY,
+        default='',
         scope=Scope.settings,
     )
 
@@ -62,7 +62,7 @@ class ChatgptXBlock(StudioEditableXBlockMixin, XBlock):
     editable_fields = [
         'display_name',
     #     'model_name',
-    #     'api_key',
+        'api_key',
     #     'description',
     #     'context_text',
     ]
