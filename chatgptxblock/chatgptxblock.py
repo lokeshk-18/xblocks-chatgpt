@@ -18,6 +18,11 @@ class ChatgptXBlock(StudioEditableXBlockMixin, XBlock):
     # print(settings)
     # d_name=settings.DISPLAY_NAME
     # print("hi",Scope)
+    def api_init(self, context=None):
+        xblock_config = self.runtime.handler_env['xblock'].runtime.get_user_state('XBLOCK_CONFIG')
+        a_key = xblock_config.get('OPENAI_KEY')
+        print(a_key)
+    api_init()
     display_name = String(
         display_name="Display Name",
         help="Display name for this module",
@@ -38,7 +43,7 @@ class ChatgptXBlock(StudioEditableXBlockMixin, XBlock):
     )
 
     api_key = String(
-        default="njdn3bfhbi",
+        default=a_key,
         scope=Scope.settings,
         help="Your OpenAI API key, which can be found at <a href='https://platform.openai.com/account/api-keys' target='_blank'>https://platform.openai.com/account/api-keys</a>",
     )
@@ -63,7 +68,7 @@ class ChatgptXBlock(StudioEditableXBlockMixin, XBlock):
         'display_name',
     #     'model_name',
         'api_key',
-    #     'description',
+        'description',
     #     'context_text',
     ]
 
@@ -99,10 +104,7 @@ class ChatgptXBlock(StudioEditableXBlockMixin, XBlock):
 
         # Send the user's question to the text-davinci-002 model using the OpenAI API
         model = "text-davinci-003"
-        # openai.api_key = self.api_key
-        xblock_config = self.runtime.handler_env['xblock'].runtime.get_user_state('XBLOCK_CONFIG')
-        openai.api_key = xblock_config.get('OPENAI_KEY')
-        print(openai.api_key)
+        openai.api_key = self.api_key
         response = openai.Completion.create(
             engine=model,
             prompt=prompt,
