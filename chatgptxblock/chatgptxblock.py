@@ -18,11 +18,11 @@ class ChatgptXBlock(StudioEditableXBlockMixin, XBlock):
     # print(settings)
     # d_name=settings.DISPLAY_NAME
     # print("hi",Scope)
-    def api_init(self, context=None):
-        xblock_config = self.runtime.handler_env['xblock'].runtime.get_user_state('XBLOCK_CONFIG')
-        a_key = xblock_config.get('OPENAI_KEY')
-        print(a_key)
-    api_init(self)
+    # def api_init(self, context=None):
+    xblock_config = runtime.handler_env['xblock'].runtime.get_user_state('XBLOCK_CONFIG')
+    a_key = xblock_config.get('OPENAI_KEY')
+    print(a_key)
+    # api_init(self)
     display_name = String(
         display_name="Display Name",
         help="Display name for this module",
