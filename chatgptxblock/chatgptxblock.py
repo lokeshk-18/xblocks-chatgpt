@@ -19,10 +19,18 @@ class ChatgptXBlock(StudioEditableXBlockMixin, XBlock):
     # d_name=settings.DISPLAY_NAME
     # print("hi",Scope)
     # def api_init(self, context=None):
-    xblock_config = runtime.handler_env['xblock'].runtime.get_user_state('XBLOCK_CONFIG')
-    a_key = xblock_config.get('OPENAI_KEY')
-    print(a_key)
+        # xblock_config = self.runtime.handler_env['xblock'].runtime.get_user_state('XBLOCK_CONFIG')
+        # a_key = xblock_config.get('OPENAI_KEY')
+        # print(a_key)
     # api_init(self)
+    def __init__(self, *args, **kwargs):
+        # Call the superclass' __init__ method first
+        super(ChatgptXBlock, self).__init__(*args, **kwargs)
+
+        # Accessing the configuration data from XBlock runtime
+        xblock_config = self.runtime.handler_env['xblock'].runtime.get_user_state('XBLOCK_CONFIG')
+        a_key = xblock_config.get('OPENAI_KEY')
+        print(a_key)
     display_name = String(
         display_name="Display Name",
         help="Display name for this module",
