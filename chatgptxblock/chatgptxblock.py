@@ -22,7 +22,7 @@ class ChatgptXBlock(StudioEditableXBlockMixin, XBlock):
         xblock_config = self.runtime.handler_env['xblock'].runtime.get_user_state('XBLOCK_CONFIG')
         a_key = xblock_config.get('OPENAI_KEY')
         print(a_key)
-    api_init()
+    api_init(self)
     display_name = String(
         display_name="Display Name",
         help="Display name for this module",
