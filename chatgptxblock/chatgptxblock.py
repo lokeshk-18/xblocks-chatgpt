@@ -5,6 +5,7 @@ import openai
 import yaml
 from xblock.core import XBlock
 from xblock.fields import Integer, String, Scope
+from xblock.runtime import DictKeyValueStore
 from xblock.fragment import Fragment
 from xblockutils.studio_editable import StudioEditableXBlockMixin
 from .common import (get_xblock_settings)
@@ -98,7 +99,10 @@ class ChatgptXBlock(StudioEditableXBlockMixin, XBlock):
 
         # Send the user's question to the text-davinci-002 model using the OpenAI API
         model = "text-davinci-003"
-        openai.api_key = self.api_key
+        # openai.api_key = self.api_key
+        xblock_config = self.runtime.handler_env['xblock'].runtime.get_user_state('XBLOCK_CONFIG')
+        openai.api_key = xblock_config.get('OPENAI_KEY')
+        print(openai.api_key)
         response = openai.Completion.create(
             engine=model,
             prompt=prompt,
