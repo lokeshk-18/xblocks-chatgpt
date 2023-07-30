@@ -61,7 +61,7 @@ class ChatgptXBlock(StudioEditableXBlockMixin, XBlock):
     editable_fields = [
         'display_name',
     #     'model_name',
-    #     'api_key',
+        'api_key',
     #     'description',
     #     'context_text',
     ]
