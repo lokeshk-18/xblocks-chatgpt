@@ -12,7 +12,7 @@ import yaml
 class ChatgptXBlock(StudioEditableXBlockMixin, XBlock):
 
     with open("/Users/lokeshk/Library/Application Support/tutor/config.yml", "r") as file:
-    config_data = yaml.safe_load(file)
+        config_data = yaml.safe_load(file)
     openai_key = config_data.get("OPENAI_KEY")
     print(openai_key)
     # xblock_settings = get_xblock_settings()
