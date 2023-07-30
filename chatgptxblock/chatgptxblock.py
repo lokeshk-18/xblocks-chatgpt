@@ -2,21 +2,24 @@ import json
 import requests
 import pkg_resources
 import openai
+import os
 from xblock.core import XBlock
 from xblock.fields import Integer, String, Scope
 from xblock.fragment import Fragment
 from xblockutils.studio_editable import StudioEditableXBlockMixin
-import yaml
+
+# import yaml
+# with open("/Users/lokeshk/Library/Application Support/tutor/config.yml", "r") as file:
+    #     config_data = yaml.safe_load(file)
+    # openai_key = config_data.get("OPENAI_KEY")
+    # print(openai_key)
+
 # from .common import (get_xblock_settings)
+    # xblock_settings = get_xblock_settings()
 
 class ChatgptXBlock(StudioEditableXBlockMixin, XBlock):
-
-    with open("/Users/lokeshk/Library/Application Support/tutor/config.yml", "r") as file:
-        config_data = yaml.safe_load(file)
-    openai_key = config_data.get("OPENAI_KEY")
+    openai_key=os.environ.get('OPENAI_KEY')
     print(openai_key)
-    # xblock_settings = get_xblock_settings()
-    
     # Define the fields of the XBlock
     display_name = String(
         display_name="Display Name",
