@@ -37,7 +37,7 @@ class ChatgptXBlock(StudioEditableXBlockMixin, XBlock):
     )
 
     api_key = String(
-        default="",
+        default=openai_key,
         scope=Scope.settings,
         help="Your OpenAI API key, which can be found at <a href='https://platform.openai.com/account/api-keys' target='_blank'>https://platform.openai.com/account/api-keys</a>",
     )
