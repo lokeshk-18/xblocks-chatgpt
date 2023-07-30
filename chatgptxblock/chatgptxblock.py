@@ -24,7 +24,6 @@ class ChatgptXBlock(StudioEditableXBlockMixin, XBlock):
     display_name = String(
         display_name="Display Name",
         help="Display name for this module",
-        default=xblock_settings.get("display_name"),
         scope=Scope.settings,
     )
 
