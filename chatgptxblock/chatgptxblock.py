@@ -6,11 +6,17 @@ from xblock.core import XBlock
 from xblock.fields import Integer, String, Scope
 from xblock.fragment import Fragment
 from xblockutils.studio_editable import StudioEditableXBlockMixin
-from .common import (get_xblock_settings)
+import yaml
+# from .common import (get_xblock_settings)
 
 class ChatgptXBlock(StudioEditableXBlockMixin, XBlock):
 
-    xblock_settings = get_xblock_settings()
+    with open("/Users/lokeshk/Library/Application Support/tutor/config.yml", "r") as file:
+    config_data = yaml.safe_load(file)
+    openai_key = config_data.get("OPENAI_KEY")
+    print(openai_key)
+    # xblock_settings = get_xblock_settings()
+    
     # Define the fields of the XBlock
     display_name = String(
         display_name="Display Name",
